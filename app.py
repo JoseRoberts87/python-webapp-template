@@ -1,13 +1,21 @@
-from flask_api import FlaskAPI
+from flask import Flask, jsonify, redirect, request
+from flask_restful import Resource, Api
 import sqlalchemy as sa
 
-app = FlaskAPI(__name__)
+
+app = Flask(__name__)
+api = Api(app)
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+class Home(Resource):
+    def get(self):
+        return {'msg': 'Hello World!'}
 
+    def post(self):
+        pass
+
+
+api.add_resource(Home, '/')
 
 if __name__ == '__main__':
     app.run()

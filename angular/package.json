@@ -1,0 +1,16 @@
+{
+  "name": "rulesapp",
+  "version": "1.0.0",
+  "description": "front end for the rules app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jose roberts robenjos",
+  "license": "MIT",
+  "dependencies": {
+    "angular-route": "^1.7.0",
+    "angularjs": "0.0.1",
+    "jquery": "^3.3.1"
+  }
+}
