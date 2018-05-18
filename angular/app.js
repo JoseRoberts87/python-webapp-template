@@ -4,8 +4,8 @@ function config($LocationProvider, $routeProvider) {
     $LocationProvider.hashPrefic('');
     $routeProvider
         .when('/', {
-            templateUrl: '',
-            controller: '',
+            templateUrl: 'index',
+            controller: homeController,
             controllerAs: 'vm'
         })
         .when('/create', {
