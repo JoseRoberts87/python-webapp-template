@@ -1,18 +1,19 @@
-from sqlalchemy import Column, Integer, String
-from model.base import Base
+from app import db, ma
+from common import utils
 
-class Locations(Base):
+class Locations(db.Model):
 
     __table__ = 'arde_locations'
 
-    location_id = Column(String(45))
-    name = Column(String(45))
-    type = Column(String(45))
-    level = Column(Integer)
-    status = Column(String(45))
+    location_id = db.Column(db.String(45), primary_key=True)
+    name = db.Column(db.String(45))
+    type = db.Column(db.String(45))
+    level = db.Column(db.Integer)
+    status = db.Column(db.String(45))
 
-    def __repr__(self):
-        return "<Locations(location_id='%s', name='%s', " \
-               "type='%s', level='%s', status='%s')>" % (
-            self.location_id, self.name,
-            self.type, self.level, self.status)
+class LocationsSchema(ma.Schema):
+    class Meta(object):
+        fields = utils.class_attributes(Locations)
+
+LOCATION_SCHEMA = LocationsSchema()
+LOCATIONS_SCHEMA = LocationsSchema(many=True)

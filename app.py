@@ -16,27 +16,38 @@ ma = Marshmallow(app)
 DB = db.Model
 MA = ma.Schema
 
+
 class MainHandler(Resource):
     def get(self):
+
         return {'msg': 'Hello World!'}
 
     def post(self):
         pass
 
 from model.rules_meta import RuleMeta, RULEMETA_SCHEMA, RULESMETA_SCHEMA
+# from model.rules import Rules, RULE_SCHEMA, RULES_SCHEMA
 class RulesHandler(Resource):
     def get(self):
-        meta = RuleMeta.query.get(4)
+        qry = RuleMeta.query.get(4)
 
-        return RULEMETA_SCHEMA.jsonify(meta)
+        return RULEMETA_SCHEMA.jsonify(qry)
 
 
 from model.components import Components, COMPONENT_SCHEMA, COMPONENTS_SCHEMA
 class ComponentsHandler(Resource):
     def get(self):
-        comp = Components.query.get('Charger')
+        qry = Components.query.get('Charger')
 
-        return COMPONENT_SCHEMA.jsonify(comp)
+        return COMPONENT_SCHEMA.jsonify(qry)
+
+from model.categories import Categories, CATEGORY_SCHEMA, CATEGORIES_SCHEMA
+class CategoriesHandler(Resource):
+    def get(self):
+        qry = Categories.query.all()
+
+        return COMPONENTS_SCHEMA.jsonify(qry)
+
 
 class Create(Resource):
     def get(self):
@@ -46,6 +57,7 @@ api.add_resource(MainHandler, '/')
 api.add_resource(RulesHandler, '/rules')
 api.add_resource(Create, '/rules/create')
 api.add_resource(ComponentsHandler, '/components')
+api.add_resource(CategoriesHandler, '/categories')
 
 
 if __name__ == '__main__':

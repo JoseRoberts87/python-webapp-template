@@ -1,4 +1,5 @@
 from app import db, ma
+from common import utils
 
 class Components(db.Model):
     __tablename__ = 'arde_components'
@@ -8,7 +9,7 @@ class Components(db.Model):
 
 class ComponentsSchema(ma.Schema):
     class Meta(object):
-        fields = ('component_id', 'name', 'type')
+        fields = utils.class_attributes(Components)
 
 COMPONENT_SCHEMA = ComponentsSchema()
 COMPONENTS_SCHEMA = ComponentsSchema(many=True)

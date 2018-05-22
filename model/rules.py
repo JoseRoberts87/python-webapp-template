@@ -1,17 +1,20 @@
 from app import db, ma
+from common import utils
 
-col = db.Column()
-string = db.String(45)
-integer = db.Integer
+class Rules(db.Model):
 
-class Rule(db.Model):
     __table__= 'audit_rule_facts'
 
-    audit_rule_facts_id = db.Column(db.Integer, autoincrement=True)
+    audit_rule_facts_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     arde_locations_location_id = db.Column(db.String(45))
     arde_components_component_id = db.Column(db.String(45))
-    arde_data_categories_data_category_id = col(integer)
+    arde_data_categories_data_category_id = db.Column(db.Integer)
     arde_persons_person_id = db.Column(db.String(45))
-    audit_rule_meta_rule_id = col(integer)
+    audit_rule_meta_rule_id = db.Column(db.Integer)
 
+class RuleShema(ma.Schema):
+    class Meta(object):
+        fields = utils.class_attributes(Rules)
 
+RULE_SCHEMA = RuleShema()
+RULES_SCHEMA = RuleShema(many=True)

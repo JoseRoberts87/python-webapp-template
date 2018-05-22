@@ -1,4 +1,5 @@
 from app import db, ma
+from common import utils
 
 class RuleMeta(db.Model):
 
@@ -12,6 +13,7 @@ class RuleMeta(db.Model):
     sample_type = db.Column(db.String(45))
     priority_level = db.Column(db.Integer)
 
+    # a different way to do this
     # def __repr__(self):
     #     return "<Meta(rule_id='%s', name='%s', description='%s', " \
     #            "sample_size='%s', status='%s', interval='%s', " \
@@ -19,11 +21,13 @@ class RuleMeta(db.Model):
     #         self.rule_id, self.name,self.description,
     #         self.sample_size, self.status, self.interval,
     #         self.sample_type, self.priority_level)
+
+
 class RuleMetaSchema(ma.Schema):
     class Meta(object):
-        # print(dir(RuleMeta))
+        fields = utils.class_attributes(RuleMeta)
+        # fields = ('rule_id','name','description','sample_size','status','frequency','sample_type','priority_level')
 
-        fields = ('rule_id','name','description','sample_size','status','frequency','sample_type','priority_level')
 
 RULEMETA_SCHEMA =RuleMetaSchema()
 RULESMETA_SCHEMA = RuleMetaSchema(many=True)
