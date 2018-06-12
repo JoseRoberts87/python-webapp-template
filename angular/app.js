@@ -1,28 +1,22 @@
-var app = angular.module('rulesApp', ['ngRoute']).config(config);
+var express = require('express');
+var app = express();
+var path = require('path');
 
-function config($LocationProvider, $routeProvider) {
-    $LocationProvider.hashPrefic('');
-    $routeProvider
-        .when('/', {
-            templateUrl: 'index',
-            controller: homeController,
-            controllerAs: 'vm'
-        })
-        .when('/create', {
-            templateUrl: 'create',
-            controller: createRuleController,
-            controllerAs: 'vm'
-        })
-        .when('/results', {
-            templateUrl: 'results',
-            controller: resultsController,
-            controllerAs: 'vm'
-        })
-        .when('/', {
-            templateUrl:'',
-            controller: someController,
-            controllerAs: 'vm'
-        })
-        .otherwise({
-            redirectTo:'/'})
-}
+app.set('port', 3000);
+
+app.use(function(req, res, next) {
+    console.log(req.method, req.url);
+    next();
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
+// app.use('/app', express.static(path.join(__dirname, 'public/node_modules')));
+
+
+// app.use('http://localhost:8761/api', routes);
+
+var server = app.listen(app.get('port'), function() {
+    var port = server.address().port;
+    console.log('port set at ' + port);
+});
