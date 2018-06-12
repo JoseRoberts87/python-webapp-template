@@ -34,15 +34,19 @@ def check_status(data):
         return 305
 
 def val_request(model, json_data, att):
+    # check if json is empty
     if json_data == None or not json_data:
         return [{'msg': 'No JSON data provided'}, 400]
 
+    # check if json is complete, all elements found
     elif sorted(tuple(k for k in json_data)) != sorted(class_attributes(model)) :
         return [{'msg': 'malformed JSON object provided'}, 403]
 
+    # check if json object found in database
     elif find(model, att):
-        return [{'msg': 'Part Number Exists'}, 302]
+        return [{'msg': 'Exists'}, 302]
 
+    # if not empty, is complete and not found, persist
     else:
         return [json_data, 200]
 
