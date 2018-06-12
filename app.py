@@ -41,6 +41,15 @@ class RulesMetaHandler(Resource):
         return output_json(data, status, d_type_header)
         # return RULESMETA_SCHEMA.jsonify(qry)
 
+    def post(self   ):
+        json_data = request.get_json(force=True)
+        data = utils.val_request(model=RuleMeta, json_data=json_data,
+                                 att={'rule_id': json_data['rule_id']})
+        if data[1] == 200:
+            utils.write_to_db(RuleMeta, json_data)
+
+        return output_json(data[0], data[1], d_type_header)
+
 from model.components import Components, COMPONENT_SCHEMA, COMPONENTS_SCHEMA
 class ComponentsHandler(Resource):
     def get(self):
@@ -50,6 +59,15 @@ class ComponentsHandler(Resource):
 
         return output_json(data, status, d_type_header)
 
+    def post(self):
+        json_data = request.get_json(force=True)
+        data = utils.val_request(model=Components, json_data=json_data,
+                               att={'component_id': json_data['component_id']})
+        if data[1] == 200:
+            utils.write_to_db(Components, json_data)
+
+        return output_json(data[0], data[1], d_type_header)
+
 from model.categories import Categories, CATEGORY_SCHEMA, CATEGORIES_SCHEMA
 class CategoriesHandler(Resource):
     def get(self):
@@ -58,6 +76,15 @@ class CategoriesHandler(Resource):
         status = utils.check_status(data)
 
         return output_json(data, status, d_type_header)
+
+    def post(self):
+        json_data = request.get_json(force=True)
+        data = utils.val_request(model=Categories, json_data=json_data,
+                               att={'data_category_id': json_data['data_category_id']})
+        if data[1] == 200:
+            utils.write_to_db(Categories, json_data)
+
+        return output_json(data[0], data[1], d_type_header)
 
 from model.locations import Locations, LOCATION_SCHEMA, LOCATIONS_SCHEMA
 class LocationsHandler(Resource):
@@ -69,8 +96,13 @@ class LocationsHandler(Resource):
         return output_json(data, status, d_type_header)
 
     def post(self):
-        obj = ''
-        utils.write_to_db(obj)
+        json_data = request.get_json(force=True)
+        data = utils.val_request(model=Locations, json_data=json_data,
+                               att={'location_id': json_data['location_id']})
+        if data[1] == 200:
+            utils.write_to_db(Locations, json_data)
+
+        return output_json(data[0], data[1], d_type_header)
 
 from model.part_numbers import PartNumbers, PARTNUMBER_SCHEMA, PARTNUMBERS_SCHEMA
 class PartNumbersHandler(Resource):
@@ -84,19 +116,9 @@ class PartNumbersHandler(Resource):
 
     def post(self):
         json_data = request.get_json(force=True)
-        # check if json is empty
-        # check if json is complete
-        # check if json object found in database
-        # if not empty, is complete and not found, persist
-
-        # data = utils.find(PartNumbers, {'part_number_id': 'part1'})
-
         data = utils.val_request(model=PartNumbers, json_data=json_data,
                                att={'part_number_id': json_data['part_number_id']})
         if data[1] == 200:
-            print('everythings ok :' , data)
-            # print(**json_data)
-
             utils.write_to_db(PartNumbers, json_data)
 
         return output_json(data[0], data[1], d_type_header)
