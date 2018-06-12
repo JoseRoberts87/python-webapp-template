@@ -1,35 +1,49 @@
 app.factory('dataFactory', dataFactory);
 
-var root = 'http://localhost:8761/api/';
-
+var root = 'http://127.0.0.1:5000/';
 
 function dataFactory($http) {
     return {
         home: home,
-        part_numbers: part_numbers,
+        partNumbers: partNumbers,
         categories: categories,
+        components:components,
+        locations:locations,
+        rules:rules,
         login: login,
         register: register
     }
 
     function home() {
-        return $http.get('api/').then(complete).catch(failed);
+        return $http.get(root).then(complete).catch(failed);
     }
 
-    function part_numbers() {
-        return $http.get('api/part_numbers').then(complete).catch(failed);
+    function partNumbers() {
+        return $http.get(root + 'part-numbers').then(complete).catch(failed);
     }
 
     function categories() {
-        return $http.get('api/categories/').then(complete).catch(failed);
+        return $http.get(root + 'categories').then(complete).catch(failed);
+    }
+
+    function components() {
+        return $http.get(root + 'components').then(complete).catch(failed);
+    }
+
+    function locations() {
+        return $http.get(root + 'locations').then(complete).catch(failed);
+    }
+
+    function rules() {
+        return $http.get(root + 'rules').then(complete).catch(failed);
     }
 
     function login() {
-        return $http.get('api/login').then(complete).catch(failed);
+        return $http.get(root + 'login').then(complete).catch(failed);
     }
 
     function register() {
-        return $http.get('api/register').then(complete).catch(failed);
+        return $http.get(root + 'register').then(complete).catch(failed);
     }
 
     function complete(response) {
