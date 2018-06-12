@@ -12,8 +12,8 @@ class Categories(db.Model):
 
 class CategoriesSchema(ma.Schema):
     class Meta(object):
-        # fields = utils.class_attributes(Categories)
-        fields = ('data_category_id','name','alt_name')
+        fields = utils.class_attributes(Categories)
+        # fields = ('data_category_id','name','alt_name')
 
 CATEGORY_SCHEMA = CategoriesSchema()
 CATEGORIES_SCHEMA = CategoriesSchema(many=True)
