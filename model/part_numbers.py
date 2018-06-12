@@ -1,7 +1,6 @@
 from app import db, ma
 from common import utils
 
-
 class PartNumbers(db.Model):
 
     __tablename__ = 'arde_part_numbers'
