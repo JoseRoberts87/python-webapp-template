@@ -1,5 +1,8 @@
 from app import db
 
+
+# class_attributes returns a tuple with
+# the class field names
 def class_attributes(obj):
     exc = ['metadata', 'query', 'query_class']
     res = [x for x in dir(obj) if x[0] != '_']
@@ -11,9 +14,15 @@ def class_attributes(obj):
     res = tuple(res)
     return res
 
-def write_to_db(obj):
-    db.session.add(obj)
-    db.session.commit()
+def write_to_db(model, obj):
+    try:
+        db.session.add(model(**obj))
+        db.session.commit()
+    except Exception as e:
+        print({'err': e})
+
+    finally:
+        db.session.close()
 
 
 def check_status(data):
@@ -24,20 +33,23 @@ def check_status(data):
     else:
         return 305
 
-def test_data(json_data, att):
+def val_request(model, json_data, att):
     if json_data == None or not json_data:
-        return [{'msg': 'No data found'}, 400]
+        return [{'msg': 'No JSON data provided'}, 400]
 
-    elif json_data[att] in list(['kiva1']):
+    elif sorted(tuple(k for k in json_data)) != sorted(class_attributes(model)) :
+        return [{'msg': 'malformed JSON object provided'}, 403]
+
+    elif find(model, att):
         return [{'msg': 'Part Number Exists'}, 302]
 
     else:
-        return json_data
+        return [json_data, 200]
 
 # this function receives a Model object and
 # a JSON key value pair, returns data from DB
 def find(model, data):
-    print(model.query.filter_by(**data).first())
+    # print(model.query.filter_by(**data).first())
     return model.query.filter_by(**data).first()
 
 # this function receives a Model object
