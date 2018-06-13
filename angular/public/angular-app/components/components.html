@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>vm.title</title>
-</head>
-<body>
-<p>these are components</p>
-</body>
-</html>
+
+<p>{{vm.title}}</p>
+
+<table class="table">
+    <tr bgcolor="#efefef">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Component Type</th>
+
+    </tr>
+    <tr ng-repeat="component in vm.components">
+        <td>{{ component.component_id}}</td>
+        <td>{{ component.name}}</td>
+        <td>{{ component.type}}</td>
+    </tr>
+</table>

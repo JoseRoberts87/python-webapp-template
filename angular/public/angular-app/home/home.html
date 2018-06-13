@@ -1,15 +1,52 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+
+<p>{{vm.title}}</p>
+
+<div class="container">
+    <form class="form-group" >
+        <!--<div class="form-group">-->
+            <label for="rule_name">Name of Rule</label>
+            <input class="form-control" type="text" name="rule_name" id="rule_name">
+            <label for="sample_size">Sample Size</label>
+            <input class="form-control" type="number" name="sample_size" id="sample_size">
+            <label for="sample_type">Sample Type</label>
+            <select class="form-control" name="sample_type" id="sample_type">
+                <option>select one</option>
+                <option>Percentage</option>
+                <option>Whole Number</option>
+            </select>
+
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <label for="frequency">Frequency of Rule</label>
+            <input class="form-control" type="number" name="frequency" id="frequency">
+            <label for="category">Category</label>
+            <select class="form-control" name="category" id="category">
+                <option>select one</option>
+                <option>Commission</option>
+                <option>Install Progress</option>
+                <option>Validation</option>
+            </select>
+            <label for="component">Component</label>
+            <select class="form-control" name="component" id="component">
+                    <option value="null">Select</option>
+                    <option ng-repeat="component in vm.components"
+                            text="{{ component.type }}"
+                            value="{{ component.component_id }}">
+                            {{ component.type }}
+                    </option>
+            </select>
+            <label for="location">Location</label>
+            <select class="form-control" name="location" id="location" type="text">
+                    <option value="null">Select</option>
+                    <option ng-repeat="location in vm.locations"
+                            text="{{ location.name }}"
+                            value="{{ location.location_id }}">
+                            {{ location.name }}
+                    </option>
+            </select>
+        <!--</div>-->
+        <input type="button" class="btn btn-primary" value="Create">
+    </form>
 
 
-</head>
-<body>
-<p>this is home</p>
-</body>
-</html>
+</div>

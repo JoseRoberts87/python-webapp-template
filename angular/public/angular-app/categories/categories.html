@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>vm.title</title>
-</head>
-<body>
-<p>these are categories</p>
-</body>
-</html>
+
+<p>{{vm.title}}</p>
+
+<table class="table">
+    <tr bgcolor="#efefef">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Alternate Name</th>
+    </tr>
+    <tr ng-repeat="category in vm.categories">
+        <td>{{ category.data_category_id }}</td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.alt_name }}</td>
+    </tr>
+</table>

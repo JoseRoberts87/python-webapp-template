@@ -7,6 +7,6 @@ function locationsController(dataFactory) {
     dataFactory.locations().then(function (response) {
         console.log(response);
 
-        vm.locations = response;
+        vm.locations = response[0];
     })
 }

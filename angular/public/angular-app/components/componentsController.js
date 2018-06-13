@@ -6,6 +6,6 @@ function componentsController(dataFactory) {
 
     dataFactory.components().then(function (response) {
         console.log(response);
-        vm.components = response;
+        vm.components = response[0];
     })
 }

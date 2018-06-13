@@ -4,7 +4,7 @@ var root = 'http://127.0.0.1:5000/';
 
 function dataFactory($http) {
     return {
-        home: home,
+        homePage: homePage,
         partNumbers: partNumbers,
         categories: categories,
         components:components,
@@ -14,7 +14,7 @@ function dataFactory($http) {
         register: register
     }
 
-    function home() {
+    function homePage() {
         return $http.get(root).then(complete).catch(failed);
     }
 

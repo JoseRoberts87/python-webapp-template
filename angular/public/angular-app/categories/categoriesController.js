@@ -8,7 +8,7 @@ function categoriesController(dataFactory) {
 
     dataFactory.categories().then(function (response) {
         console.log(response);
-        vm.categories = response;
+        vm.categories = response[0];
 
     })
 

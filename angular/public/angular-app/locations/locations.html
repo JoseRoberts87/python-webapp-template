@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>these are locations</p>
-</body>
-</html>
+
+<p>{{vm.title}}</p>
+
+<table class="table">
+    <tr bgcolor="#efefef">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Location Type</th>
+        <th>Priority Level</th>
+        <th>Status</th>
+    </tr>
+    <tr ng-repeat="location in vm.locations">
+        <td>{{location.location_id}}</td>
+        <td>{{location.name}}</td>
+        <td>{{location.type}}</td>
+        <td>{{location.level}}</td>
+        <td>{{location.status}}</td>
+    </tr>
+</table>

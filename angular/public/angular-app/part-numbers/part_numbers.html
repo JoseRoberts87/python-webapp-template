@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
 
-    <p>vm.title</p>
-</head>
-<body>
+<p>{{vm.title}}</p>
 
-</body>
-</html>
+
+<table class="table">
+    <tr bgcolor="#efefef">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Alias</th>
+        <th>Component</th>
+
+    </tr>
+    <tr ng-repeat="part in vm.partNumbers">
+        <td>{{ part.part_number_id }}</td>
+        <td>{{ part.name }}</td>
+        <td>{{ part.alias }}</td>
+        <td>{{ part.arde_components_component_id }}</td>
+    </tr>
+</table>
