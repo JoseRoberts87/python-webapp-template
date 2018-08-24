@@ -3,7 +3,7 @@ app.controller('partNumbersController', partNumbersController);
 function partNumbersController(dataFactory) {
 
     var vm = this;
-    vm.title = 'AR DE Part Numbers';
+    vm.title = 'Part Numbers';
 
     dataFactory.partNumbers().then(function (response) {
 

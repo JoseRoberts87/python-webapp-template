@@ -1,19 +1,25 @@
 
-<p>{{vm.title}}</p>
+<!--<p>{{vm.title}}</p>-->
 
-<table class="table">
-    <tr bgcolor="#efefef">
-        <th>Id</th>
-        <th>Name</th>
-        <th>Location Type</th>
-        <th>Priority Level</th>
-        <th>Status</th>
-    </tr>
-    <tr ng-repeat="location in vm.locations">
-        <td>{{location.location_id}}</td>
-        <td>{{location.name}}</td>
-        <td>{{location.type}}</td>
-        <td>{{location.level}}</td>
-        <td>{{location.status}}</td>
-    </tr>
-</table>
+<div class="fit-screen">
+    <table class="table">
+        <thead>
+        <tr bgcolor="#efefef">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Location Type</th>
+            <th>Priority Level</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="location in vm.locations">
+            <td>{{location.location_id}}</td>
+            <td>{{location.name}}</td>
+            <td>{{location.type}}</td>
+            <td>{{location.level}}</td>
+            <td>{{location.status}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,16 +1,17 @@
 
-<p>{{vm.title}}</p>
+<!--<p>{{vm.title}}</p>-->
+<div class="fit-screen">
+    <table class="table">
+        <thead bgcolor="#efefef">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Component Type</th>
 
-<table class="table">
-    <tr bgcolor="#efefef">
-        <th>Id</th>
-        <th>Name</th>
-        <th>Component Type</th>
-
-    </tr>
-    <tr ng-repeat="component in vm.components">
-        <td>{{ component.component_id}}</td>
-        <td>{{ component.name}}</td>
-        <td>{{ component.type}}</td>
-    </tr>
-</table>
+        </thead>
+        <tbody ng-repeat="component in vm.components">
+            <td>{{ component.component_id}}</td>
+            <td>{{ component.name}}</td>
+            <td>{{ component.type}}</td>
+        </tbody>
+    </table>
+</div>

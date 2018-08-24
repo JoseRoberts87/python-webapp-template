@@ -2,7 +2,7 @@ app.controller('locationsController', locationsController);
 
 function locationsController(dataFactory) {
     var vm = this;
-    vm.title = 'AR DE Locations'
+    vm.title = 'Locations'
 
     dataFactory.locations().then(function (response) {
         console.log(response);

@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, redirect, request, make_response
 from flask_restful import Resource, Api, output_json, reqparse
-from flask_restful.representations import json
+from flask_restful.utils import cors
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
@@ -33,6 +33,8 @@ class MainHandler(Resource):
 from model.rules_meta import RuleMeta, RULEMETA_SCHEMA, RULESMETA_SCHEMA
 # from model.rules import Rules, RULE_SCHEMA, RULES_SCHEMA
 class RulesMetaHandler(Resource):
+
+    @cors.crossdomain(origin='*')
     def get(self):
         qry = RuleMeta.query.all()
         data = RULESMETA_SCHEMA.dump(qry)
@@ -52,8 +54,10 @@ class RulesMetaHandler(Resource):
 
 from model.components import Components, COMPONENT_SCHEMA, COMPONENTS_SCHEMA
 class ComponentsHandler(Resource):
+
+    @cors.crossdomain(origin='*')
     def get(self):
-        qry = Components.query.all()
+        qry = Components.query.find(par)
         data = COMPONENTS_SCHEMA.dump(qry)
         status = utils.check_status(data)
 
@@ -70,6 +74,8 @@ class ComponentsHandler(Resource):
 
 from model.categories import Categories, CATEGORY_SCHEMA, CATEGORIES_SCHEMA
 class CategoriesHandler(Resource):
+
+    @cors.crossdomain(origin='*')
     def get(self):
         qry = Categories.query.all()
         data = CATEGORIES_SCHEMA.dump(qry)
@@ -88,6 +94,8 @@ class CategoriesHandler(Resource):
 
 from model.locations import Locations, LOCATION_SCHEMA, LOCATIONS_SCHEMA
 class LocationsHandler(Resource):
+
+    @cors.crossdomain(origin='*')
     def get(self):
         qry = Locations.query.all()
         data = LOCATIONS_SCHEMA.dump(qry)
@@ -107,6 +115,7 @@ class LocationsHandler(Resource):
 from model.part_numbers import PartNumbers, PARTNUMBER_SCHEMA, PARTNUMBERS_SCHEMA
 class PartNumbersHandler(Resource):
 
+    @cors.crossdomain(origin='*')
     def get(self):
         qry = PartNumbers.query.all()
         data = PARTNUMBERS_SCHEMA.dump(qry)
@@ -130,7 +139,7 @@ class Create(Resource):
 
 
 api.add_resource(MainHandler, '/')
-api.add_resource(RulesMetaHandler, '/rules-meta')
+api.add_resource(RulesMetaHandler, '/rules')
 api.add_resource(ComponentsHandler, '/components')
 api.add_resource(CategoriesHandler, '/categories')
 api.add_resource(LocationsHandler, '/locations')

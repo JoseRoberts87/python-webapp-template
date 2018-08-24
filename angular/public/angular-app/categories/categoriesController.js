@@ -4,7 +4,7 @@ function categoriesController(dataFactory) {
 
     var vm = this;
 
-    vm.title = 'AR DE Categories'
+    vm.title = 'Categories'
 
     dataFactory.categories().then(function (response) {
         console.log(response);

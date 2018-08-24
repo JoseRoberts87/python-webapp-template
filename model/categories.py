@@ -3,7 +3,7 @@ from common import utils
 
 class Categories(db.Model):
 
-    __tablename__ = 'arde_data_categories'
+    __tablename__ = 'data_categories'
 
     data_category_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(45))

@@ -1,9 +1,11 @@
+html, body { height: 100%; }
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: orangered;
+    background-color: darkorange;
 }
 
 li {
@@ -167,6 +169,16 @@ li a:hover:not(.active) {
     margin-right: auto;
     width: 40%;
 }
+
+
+/************* table *************/
+div .fit-screen {
+    overflow: auto;
+    height: 600px;
+
+}
+
+
 
 /*@media screen and (max-width: 700px){*/
 

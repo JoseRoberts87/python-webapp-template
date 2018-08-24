@@ -1,25 +1,31 @@
-<p>{{vm.title}}</p>
-<table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
+<!--<p>{{vm.title}}</p>-->
+<div class="fit-screen">
+
+<table class="table">
+        <thead >
+            <tr bgcolor="#efefef">
+                <th><input type="checkbox"> Id</th>
                 <th>Rule Name</th>
-                <th>Location</th>
-                <th>Component</th>
-                <th>Category</th>
+                <th>Description</th>
                 <th>Sample Size</th>
                 <th>Sample Type</th>
                 <th>Frequency</th>
+                <th>Status</th>
+                <th>Priority Level</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>north america</td>
-                <td>NA</td>
-                <td>Pods</td>
-                <td>Install Progress</td>
-                <td>10</td>
-                <td>Percent</td>
-                <td>Daily</td>
+            <tr ng-repeat="rule in vm.rules">
+                <td><input type="checkbox">
+                    {{rule.rule_id}}</td>
+                <td>{{rule.name}}</td>
+                <td>{{rule.description}}</td>
+                <td>{{rule.sample_size}}</td>
+                <td>{{rule.sample_type}}</td>
+                <td>{{rule.frequency}}</td>
+                <td>{{rule.status}}</td>
+                <td>{{rule.priority_level}}</td>
             </tr>
         </tbody>
-    </table>
+</table>
+</div>

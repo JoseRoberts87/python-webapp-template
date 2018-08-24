@@ -1,5 +1,5 @@
 
-<p>{{vm.title}}</p>
+<!--<p>{{vm.title}}</p>-->
 
 <div class="container">
     <form class="form-group" >
@@ -10,7 +10,7 @@
             <input class="form-control" type="number" name="sample_size" id="sample_size">
             <label for="sample_type">Sample Type</label>
             <select class="form-control" name="sample_type" id="sample_type">
-                <option>select one</option>
+                <option value="null">select one</option>
                 <option>Percentage</option>
                 <option>Whole Number</option>
             </select>
@@ -21,14 +21,14 @@
             <input class="form-control" type="number" name="frequency" id="frequency">
             <label for="category">Category</label>
             <select class="form-control" name="category" id="category">
-                <option>select one</option>
+                <option value="null">select one</option>
                 <option>Commission</option>
                 <option>Install Progress</option>
                 <option>Validation</option>
             </select>
             <label for="component">Component</label>
             <select class="form-control" name="component" id="component">
-                    <option value="null">Select</option>
+                    <option value="null">select one</option>
                     <option ng-repeat="component in vm.components"
                             text="{{ component.type }}"
                             value="{{ component.component_id }}">
@@ -37,7 +37,7 @@
             </select>
             <label for="location">Location</label>
             <select class="form-control" name="location" id="location" type="text">
-                    <option value="null">Select</option>
+                    <option value="null">select one</option>
                     <option ng-repeat="location in vm.locations"
                             text="{{ location.name }}"
                             value="{{ location.location_id }}">

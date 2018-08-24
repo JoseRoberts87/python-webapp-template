@@ -3,7 +3,7 @@ from common import utils
 
 
 class Locations(db.Model):
-    __tablename__ = 'arde_locations'
+    __tablename__ = 'locations'
 
     location_id = db.Column(db.String(45), primary_key=True)
     name = db.Column(db.String(45))

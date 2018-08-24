@@ -3,12 +3,12 @@ from common import utils
 
 class PartNumbers(db.Model):
 
-    __tablename__ = 'arde_part_numbers'
+    __tablename__ = 'part_numbers'
 
     part_number_id = db.Column(db.String(45), primary_key=True)
     name = db.Column(db.String(45))
     alias = db.Column(db.String(45))
-    arde_components_component_id = db.Column(db.String(45))
+    components_component_id = db.Column(db.String(45))
 
 
 class PartNumbersSchema(ma.Schema):

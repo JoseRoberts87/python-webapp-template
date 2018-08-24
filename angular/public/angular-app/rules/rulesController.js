@@ -5,9 +5,9 @@ function rulesController(dataFactory) {
     vm.title = 'Audit Rules';
 
     dataFactory.rules().then(function (response) {
-        console.log(response);
+        console.log(response[0]);
 
-        vm.rules = response;
+        vm.rules = response[0];
     })
 
 }
